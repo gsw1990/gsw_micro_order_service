@@ -1,0 +1,26 @@
+server: 
+  port: 9010
+ 
+spring: 
+  application:
+    name: microserviorder-zuul-gateway
+ 
+eureka: 
+  client: 
+    service-url: 
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka,http://eureka7003.com:7003/eureka  
+  instance:
+    instance-id: zuul-gateway.com
+    prefer-ip-address: true 
+ 
+ 
+zuul:
+  prefix: /zuul-ww
+  ignored-services: "*"
+  routes:
+    orderservice.serviceId: microservice-order
+    orderservice.path: /ordersevice/**
+  
+ 
+ 
+
